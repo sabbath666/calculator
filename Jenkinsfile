@@ -1,21 +1,33 @@
-pipeline{
+pipeline {
     agent any
 
-    triggers{
+    triggers {
         pollSCM('* * * * *')
     }
 
-    stages{
-        stage("Compile"){
-            steps{
+    stages {
+        stage("Compile") {
+            steps {
                 sh "chmod 777 -R *"
                 sh "./gradlew compileJava"
             }
         }
 
-        stage("Unit tests"){
-            steps{
+        stage("Unit tests") {
+            steps {
                 sh "./gradlew test"
+            }
+        }
+
+        stage("Code coverage") {
+            steps {
+                sh "./gradlew jacocoTestReport"
+                publishHTML(target: [
+                        reportDir  : 'build/reports/jacoco/test/html',
+                        reportFiles: 'index.html',
+                        reportName : 'Code Coverage Report']
+                )
+                sh "./gradlew jacocoTestCoverageVerification"
             }
         }
     }
