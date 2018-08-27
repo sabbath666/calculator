@@ -30,8 +30,45 @@ pipeline {
                 sh "./gradlew jacocoTestCoverageVerification"
             }
         }
-    }
 
+        stage("Build") {
+            steps {
+                sh "./gradlew build"
+            }
+        }
+
+        stage("Docker build") {
+            steps {
+                sh "docker build -t 142.93.68.244/calculator ."
+            }
+        }
+
+        stage("Docker login") {
+            steps {
+                sh 'docker login -u admin -p hoog0ree 142.93.68.244'
+            }
+        }
+
+        stage("Docker push") {
+            steps {
+                sh "docker push 142.93.68.244/calculator"
+            }
+        }
+
+        stage("Deploy to staging") {
+            steps {
+                sh "docker rm -f calculator || echo 'calculator doesn't extsts. ok"
+                sh "docker run -d --rm -p 8888:8080 --name calculator 142.93.68.244/mycontroller"
+            }
+        }
+        stage("Acceptance test") {
+            steps {
+                sleep 30
+                sh "./acceptance_test.sh"
+            }
+        }
+
+    }
 //    post{
 //        always{
 //            mail to : 'sergeysabbath@gmail.com',
