@@ -48,6 +48,8 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("info.cukes:cucumber-java:1.2.5")
+    testCompile("info.cukes:cucumber-junit:1.2.5")
 }
 
 jacocoTestCoverageVerification {
@@ -58,4 +60,19 @@ jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+task acceptanceTest(type: Test) {
+    include '**/acceptance/**'
+    systemProperties System.getProperties()
+}
+
+//task smokeTest(type: Test) {
+//    include '**/smoke/**'
+//    systemProperties System.getProperties()
+//}
+
+test {
+    exclude '**/acceptance/**'
+//    exclude '**/smoke/**'
 }
