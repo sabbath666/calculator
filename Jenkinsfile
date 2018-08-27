@@ -58,7 +58,7 @@ pipeline {
         stage("Deploy to staging") {
             steps {
                 sh "docker rm -f calculator || echo 'calculator doesn't extsts. ok"
-                sh "docker run -d --rm -p 8888:8080 --name calculator 142.93.68.244/mycontroller"
+                sh "docker run -d --rm -p 8888:8080 --name calculator 142.93.68.244/calculator"
             }
         }
         stage("Acceptance test") {
