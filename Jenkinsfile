@@ -31,4 +31,12 @@ pipeline {
             }
         }
     }
+
+    post{
+        always{
+            mail to : 'sergeysabbath@gmail.com'
+            subject:  'Completed Pipeline: ${currentBuid.fullDisplayName}'
+            body: 'Сборка завершена, результат тут ---> {env.BUILD_URL}'
+        }
+    }
 }
