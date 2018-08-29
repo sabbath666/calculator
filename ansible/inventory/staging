@@ -1,2 +1,2 @@
 [webservers]
-stage ansible_host=209.97.157.236 ansible_python_interpreter=/usr/bin/python3
+stage ansible_host=209.97.157.236 ansible_python_interpreter=/usr/bin/python3.5
