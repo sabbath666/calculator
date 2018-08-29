@@ -57,6 +57,7 @@ pipeline {
 
         stage("Deploy to staging") {
             steps {
+                sleep 5000
                 sh "ansible-playbook ansible/playbooks/playbook.yml -i ansible/inventory/staging"
                 sleep 60
             }
