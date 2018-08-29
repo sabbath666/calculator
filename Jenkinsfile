@@ -58,7 +58,7 @@ pipeline {
         stage("Deploy to staging") {
             steps {
                 sh "ansible all -m ping"
-//                sh "ansible-playbook ansible/playbooks/playbook.yml -i ansible/inventory/staging"
+                sh "ansible-playbook ansible/playbooks/playbook.yml -i ansible/inventory/staging"
                 sleep 60
             }
         }
