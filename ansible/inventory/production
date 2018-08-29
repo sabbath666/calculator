@@ -1,0 +1,2 @@
+[webservers]
+prod ansible_host=142.93.178.150 ansible_python_interpreter=/usr/bin/python3root@ansible

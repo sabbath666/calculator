@@ -57,15 +57,16 @@ pipeline {
 
         stage("Deploy to staging") {
             steps {
-                sh "docker rm -f calculator || echo 'calculator doesn't extsts. ok"
-                sh "docker run -d --rm -p 8888:8080 --name calculator 142.93.68.244/calculator"
+                sh "ansible-playbook ansible/playbooks/playbook.yml -i ansible/inventory/staging"
+                sleep 60
             }
         }
-        stage("Acceptance test") {
-            steps {
-                sh "./acceptance_test.sh"
-            }
-        }
+
+//        stage("Acceptance test") {
+//            steps {
+//                sh "./acceptance_test.sh 192.168.0.166"
+//            }
+//        }
 
     }
 //    post{
