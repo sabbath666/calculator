@@ -3,6 +3,12 @@
   become: yes
   become_method: sudo
   tasks:
+  - name: log into private repo
+    docker_login:
+      registry: 142.93.68.244
+      username: admin
+      password: hoog0ree
+      reauthorize: yes
   - name: copy docker-compose.yml
     copy:
       src: ./docker-compose.yml
