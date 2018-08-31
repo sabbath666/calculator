@@ -55,25 +55,19 @@ pipeline {
             }
         }
 
-        stage("Deploy to prod") {
+        stage("Deploy to staging") {
             steps {
-                sh "ansible-playbook /etc/ansible/playbooks/deploy.yml"
+                sh "ansible all -m ping"
+                sh "ansible-playbook playbook.yml -i ansible/inventory/staging"
+                sleep 30
             }
         }
 
-//        stage("Deploy to staging") {
-//            steps {
-//                sh "ansible all -m ping"
-//                sh "ansible-playbook playbook.yml -i ansible/inventory/staging"
-//                sleep 60
-//            }
-//        }
-
-//        stage("Acceptance test") {
-//            steps {
-//                sh "./acceptance_test.sh 192.168.0.166"
-//            }
-//        }
+        stage("Acceptance test") {
+            steps {
+                sh "./acceptance_test.sh 45.55.43.205"
+            }
+        }
 
     }
 //    post{
