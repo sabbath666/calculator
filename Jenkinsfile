@@ -55,9 +55,9 @@ pipeline {
             }
         }
 
-        stage("Deploy to staging") {
+        stage("Deploy to staging.cfg") {
             steps {
-                sh "ansible-playbook playbook.yml -i inventory/staging"
+                sh "ansible-playbook playbook.yml -i inventory/staging.cfg"
             }
         }
 
