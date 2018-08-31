@@ -17,6 +17,7 @@
     docker_service:
       project_src: .
       build: yes
+      nocache: yes
       state: present
       recreate: always
       restarted: yes
