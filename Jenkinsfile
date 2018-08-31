@@ -57,12 +57,7 @@ pipeline {
 
         stage("Deploy to staging") {
             steps {
-
-                sleep 10000000
-                sh "ansible all -m ping"
-                sh "ansible-playbook playbook.yml -i ansible/inventory/staging"
-
-
+                sh "docker run --rm -it --name=ansible -v $HOME/.ssh:/root/.ssh -v ~/ansible:/etc/ansible williamyeh/ansible:ubuntu16.04 ansible-playbook /etc/ansible/playbooks/deploy.yml"
                 sleep 30
             }
         }
