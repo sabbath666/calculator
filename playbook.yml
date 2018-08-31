@@ -18,6 +18,7 @@
       project_src: .
       build: yes
       nocache: yes
+      pull: yes
       state: present
       recreate: always
       restarted: yes
