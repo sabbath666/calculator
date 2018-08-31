@@ -17,4 +17,5 @@
     docker_service:
       project_src: .
       state: present
+      recreate: always
       restarted: yes
