@@ -58,8 +58,8 @@ pipeline {
         stage("Deploy to staging.cfg") {
             steps {
                 sh "cat playbook.yml"
-                sh "cat inventory/staging.cfg"
-                sh "ansible-playbook playbook.yml -i inventory/staging.cfg"
+                sh "cat ansible/inventory/staging.cfg"
+                sh "ansible-playbook playbook.yml -i ansible/inventory/staging.cfg"
             }
         }
 
