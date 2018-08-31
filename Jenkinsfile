@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-        stage("Deploy to staging.cfg") {
+        stage("Deploy to staging") {
             steps {
                 sh "cat playbook.yml"
                 sh "cat ansible/inventory/staging.cfg"
@@ -71,6 +71,14 @@ pipeline {
         stage("Acceptance test 2") {
             steps {
                 sh "./gradlew acceptanceTest -Dcalculator.url=http://45.55.43.205:8080"
+            }
+        }
+
+        stage("Deploy to production") {
+            steps {
+                sh "cat playbook.yml"
+                sh "cat ansible/inventory/production.cfg"
+                sh "ansible-playbook playbook.yml -i ansible/inventory/production.cfg"
             }
         }
 
