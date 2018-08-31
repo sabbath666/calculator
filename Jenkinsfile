@@ -57,7 +57,7 @@ pipeline {
 
         stage("Deploy to staging") {
             steps {
-                sh "docker run --rm  --name=ansible -v $HOME/.ssh:/root/.ssh -v ~/ansible:/etc/ansible williamyeh/ansible:ubuntu16.04 ansible-playbook /etc/ansible/playbooks/deploy.yml"
+                sh "docker run --rm -v $HOME/.ssh:/root/.ssh -v ~/ansible:/etc/ansible williamyeh/ansible:ubuntu16.04 ansible-playbook playbook.yml -i inventory/staging"
             }
         }
 
