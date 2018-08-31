@@ -12,4 +12,7 @@ class CalculatorController(val calculator: Calculator) {
             @RequestParam("b") b: Int
     ) = calculator.sum(a, b)
 
+    @GetMapping("/test")
+    fun test()="ok"
+
 }
