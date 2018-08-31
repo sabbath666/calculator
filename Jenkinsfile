@@ -68,6 +68,11 @@ pipeline {
                 sh "./acceptance_test.sh 45.55.43.205"
             }
         }
+        stage("Acceptance test 2") {
+            steps {
+                sh "./gradlew acceptanceTest -Dcalculator.url=http://45.55.43.205:8080"
+            }
+        }
 
     }
 //    post{
