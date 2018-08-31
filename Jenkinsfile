@@ -55,13 +55,20 @@ pipeline {
             }
         }
 
-        stage("Deploy to staging") {
+        stage("Deploy to prod") {
             steps {
-                sh "ansible all -m ping"
-                sh "ansible-playbook playbook.yml -i ansible/inventory/staging"
+                sh "ansible-playbook /etc/ansible/playbooks/test.yml"
                 sleep 60
             }
         }
+
+//        stage("Deploy to staging") {
+//            steps {
+//                sh "ansible all -m ping"
+//                sh "ansible-playbook playbook.yml -i ansible/inventory/staging"
+//                sleep 60
+//            }
+//        }
 
 //        stage("Acceptance test") {
 //            steps {
