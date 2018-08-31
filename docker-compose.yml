@@ -3,6 +3,6 @@ services:
   calculator:
     image: 142.93.68.244/calculator:latest
     ports:
-      - 8080
+      - 8080:8080
 #  redis:
 #    image: redis:latest
