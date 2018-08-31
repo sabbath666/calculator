@@ -83,11 +83,11 @@ pipeline {
         }
 
     }
-//    post{
-//        always{
-//            mail to : 'sergeysabbath@gmail.com',
-//            subject:  "Completed Pipeline: ${currentBuild.fullDisplayName}",
-//            body: "Сборка завершена, результат тут ---> {env.BUILD_URL}"
-//        }
-//    }
+    post{
+        always{
+            mail to : 'sergeysabbath@gmail.com',
+            subject:  "Completed Pipeline",
+            body: "Сборка завершена, результат тут ---> {env.BUILD_URL}"
+        }
+    }
 }
