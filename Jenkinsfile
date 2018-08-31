@@ -58,7 +58,6 @@ pipeline {
         stage("Deploy to prod") {
             steps {
                 sh "ansible-playbook /etc/ansible/playbooks/deploy.yml"
-                sleep 60
             }
         }
 
