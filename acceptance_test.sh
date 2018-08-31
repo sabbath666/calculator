@@ -1,4 +1,4 @@
 #!/bin/bash
 sleep 30
-./gradlew acceptanceTest '-Dcalculator.url=http://142.93.73.34:8888'
+./gradlew acceptanceTest '-Dcalculator.url=http://45.55.43.205:8080'
 
