@@ -1,2 +1,2 @@
 [webservers]
-stage ansible_host=45.55.43.205
+web1 ansible_host=45.55.43.205
