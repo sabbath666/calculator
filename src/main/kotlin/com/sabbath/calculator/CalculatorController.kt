@@ -13,6 +13,6 @@ class CalculatorController(val calculator: Calculator) {
     ) = calculator.sum(a, b)
 
     @GetMapping("/test")
-    fun test()="Hi!"
+    fun test()="Hello!"
 
 }

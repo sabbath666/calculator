@@ -68,11 +68,6 @@ pipeline {
                 sh "./acceptance_test.sh 45.55.43.205"
             }
         }
-        stage("Acceptance test 2") {
-            steps {
-                sh "./gradlew acceptanceTest -Dcalculator.url=http://45.55.43.205:8080"
-            }
-        }
 
         stage("Deploy to production") {
             steps {
@@ -83,11 +78,4 @@ pipeline {
         }
 
     }
-    /*post{
-        always{
-            mail to : 'sergeysabbath@gmail.com',
-            subject:  "Completed Pipeline",
-            body: "Сборка завершена, результат тут ---> {env.BUILD_URL}"
-        }
-    }*/
 }
