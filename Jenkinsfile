@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage("Compile") {
             steps {
-                sh "git diff --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT"
+                sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT"
                 sh "chmod 777 -R *"
                 sh "./gradlew compileJava"
             }
