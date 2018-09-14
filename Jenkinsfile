@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage("Compile") {
             steps {
-                sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT > ./test.txt"
+                sh "git diff --name-only  HEAD $GIT_COMMIT > ./test.txt"
+                ls -la
                 makeScript()
                 sh "cat test.txt"
                 sh "chmod 777 -R *"
