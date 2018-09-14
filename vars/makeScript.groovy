@@ -7,7 +7,7 @@ def src2 = new File("/home/jenkins/workspace/calculator/script-update.src")
 src2 << src.text
 src2 << f.text
 ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream("update.zip"))
-src.text.eachLine {
+f.text.eachLine {
     zipFile.putNextEntry(new ZipEntry(it))
     def file= new File(it)
     def buffer = new byte[file.size()]
