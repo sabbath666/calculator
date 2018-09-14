@@ -9,8 +9,9 @@ pipeline {
         stage("Compile") {
             steps {
                 sh "pwd"
+                sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT > ./test.txt"
                 sh "ls -la"
-                makeScript()
+                makeScript("/home/jenkins/workspace/calculator/test.txt")
                 sh "cat test.txt"
                 sh "chmod 777 -R *"
                 sh "./gradlew compileJava"

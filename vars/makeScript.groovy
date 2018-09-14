@@ -1,9 +1,7 @@
-def call(){
-    def process = """git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT""".execute()
-    process.wait(30000)
-    def res=process.inputStream.text
-    println("DIFF: $res")
+def call(def filepath){
+    println("current dir ${new File(".").canonicalPath}")
+    def f = new File(filepath)
     def src = new File("script.src")
-    src << res
-    println("script.src: ${src.text}")
+    src << f.text
+    println ("script.src: ${src.text}")
 }
