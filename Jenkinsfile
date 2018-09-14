@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage("Compile") {
             steps {
-                sh "pwd"
                 sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT > ./test.txt"
                 sh "ls -la"
                 sh "groovy './vars/makeScript.groovy'"
