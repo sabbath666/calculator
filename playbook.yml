@@ -9,7 +9,7 @@
       username: admin
       password: hoog0ree
       reauthorize: yes
-  - name: copy docker-compose.yml
+  - name: copy file docker-compose.yml
     copy:
       src: ./docker-compose.yml
       dest: ./docker-compose.yml
