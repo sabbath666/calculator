@@ -11,8 +11,9 @@ pipeline {
                 sh "pwd"
                 sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT > ./test.txt"
                 sh "ls -la"
-                makeScript("./home/jenkins/workspace/calculator/test.txt")
-                sh "cat test.txt"
+                sh "groovy './vars/makeScript.groovy'"
+                sh "ls -la"
+                sh "cat script.src"
                 sh "chmod 777 -R *"
                 sh "./gradlew compileJava"
             }
