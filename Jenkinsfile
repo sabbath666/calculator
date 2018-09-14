@@ -14,7 +14,7 @@ pipeline {
                 sh "ls -la"
                 sh "groovy './vars/makeScript.groovy'"
                 sh "ls -la"
-                sh "cat script.src"
+                sh "cat script-update.src"
                 sh "chmod 777 -R *"
                 sh "./gradlew compileJava"
             }
