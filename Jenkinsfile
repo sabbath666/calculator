@@ -8,7 +8,11 @@ pipeline {
     stages {
         stage("Compile") {
             steps {
-                sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT"
+                sh "git diff --name-only  $GIT_PREVIOUS_COMMIT $GIT_COMMIT > test.txt"
+                def f=new File("test.txt")
+                def src=new File("script.src")
+                src << f.text
+                sh "cat test.txt"
                 sh "chmod 777 -R *"
                 sh "./gradlew compileJava"
             }
