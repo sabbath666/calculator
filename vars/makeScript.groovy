@@ -9,8 +9,8 @@ src2 << f.text
 ZipOutputStream zipFile = new ZipOutputStream(new FileOutputStream("update.zip"))
 src.text.eachLine {
     zipFile.putNextEntry(new ZipEntry(it))
-    def buffer = new byte[file.size()]
     def file= new File(it)
+    def buffer = new byte[file.size()]
     file.withInputStream {
         zipFile.write(buffer, 0, it.read(buffer))
     }
